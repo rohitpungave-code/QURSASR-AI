@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QUASAR AI - Futuristic ChatGPT AI Platform & Entrepreneur Copilot</title>
+  <meta name="description" content="Quasar AI is a multi-agent AI brain workspace featuring ChatGPT-style conversation engine, financial break-even analytics, business plan generators, and graphic branding tools for entrepreneurs.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div id="app-container">
+
+    <!-- SIDEBAR NAVIGATION -->
+    <aside class="sidebar">
+      <div class="brand-header">
+        <div class="brand-logo">Q</div>
+        <div class="brand-title-group">
+          <h1>QUASAR AI</h1>
+          <span class="brand-badge">PRO BRAIN v4.5</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <div class="nav-item active" data-pane="pane-chat">
+          <i class="fas fa-comments"></i>
+          <span>AI Chat Studio</span>
+        </div>
+
+        <div class="nav-item badge-highlight" data-pane="pane-biz">
+          <i class="fas fa-briefcase"></i>
+          <span>Entrepreneur Copilot</span>
+        </div>
+
+        <div class="nav-item" data-pane="pane-projects">
+          <i class="fas fa-diagram-project"></i>
+          <span>AI Projects & Activities</span>
+        </div>
+
+        <div class="nav-item" data-pane="pane-agents">
+          <i class="fas fa-users-cog"></i>
+          <span>AI Agent Team</span>
+        </div>
+
+        <div class="nav-item" data-pane="pane-brand">
+          <i class="fas fa-palette"></i>
+          <span>Brand & Graphic Studio</span>
+        </div>
+
+        <div class="nav-item" data-pane="pane-vault">
+          <i class="fas fa-book"></i>
+          <span>Prompt Library</span>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="pro-card">
+          <h4><i class="fas fa-bolt" style="color:#fbbf24;"></i> QUASAR ULTIMATE</h4>
+          <p>Unlimited Multi-AI Brain, Financial Calculators & 4K Graphics</p>
+          <button class="btn-pro">ACTIVE PRO PLAN</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="main-content">
+
+      <!-- TOP APP BAR -->
+      <header class="top-bar">
+        <div class="model-selector-container">
+          <div class="model-badge" id="model-selector-btn">
+            <span class="model-dot"></span>
+            <span id="current-model-label">Quasar Prime 4.5</span>
+            <i class="fas fa-chevron-down" style="font-size:0.75rem; color:#94a3b8;"></i>
+          </div>
+
+          <!-- Model Dropdown -->
+          <div id="model-dropdown-menu" style="display:none; position:absolute; top:60px; left:30px; background:#0f172a; border:1px solid rgba(0,240,255,0.3); border-radius:12px; padding:10px; z-index:200; width:240px; box-shadow:0 10px 30px rgba(0,0,0,0.5);">
+            <div class="model-option" data-model="Quasar Prime 4.5" style="padding:10px; cursor:pointer; border-radius:6px; color:#fff; display:flex; align-items:center; gap:8px;">
+              <i class="fas fa-brain" style="color:#00f0ff;"></i> Quasar Prime 4.5 (Default)
+            </div>
+            <div class="model-option" data-model="OpenAI GPT-4o" style="padding:10px; cursor:pointer; border-radius:6px; color:#cbd5e1; display:flex; align-items:center; gap:8px;">
+              <i class="fas fa-bolt" style="color:#10b981;"></i> OpenAI GPT-4o
+            </div>
+            <div class="model-option" data-model="Claude 3.5 Sonnet" style="padding:10px; cursor:pointer; border-radius:6px; color:#cbd5e1; display:flex; align-items:center; gap:8px;">
+              <i class="fas fa-feather" style="color:#fbbf24;"></i> Claude 3.5 Sonnet
+            </div>
+            <div class="model-option" data-model="DeepSeek R1 Reasoning" style="padding:10px; cursor:pointer; border-radius:6px; color:#cbd5e1; display:flex; align-items:center; gap:8px;">
+              <i class="fas fa-microchip" style="color:#ec4899;"></i> DeepSeek R1 Reasoning
+            </div>
+          </div>
+        </div>
+
+        <div class="top-actions">
+          <button class="action-btn" title="New Chat" onclick="location.reload();"><i class="fas fa-plus"></i></button>
+          <button class="action-btn" title="System Settings"><i class="fas fa-cog"></i></button>
+          <button class="action-btn" title="Notifications"><i class="fas fa-bell"></i></button>
+        </div>
+      </header>
+
+      <!-- TAB VIEWS CONTAINER -->
+      <div class="tab-views">
+
+        <!-- 1. CHAT STUDIO PANE -->
+        <section class="tab-pane active" id="pane-chat">
+          <div class="chat-history" id="chat-history-container">
+            <!-- Welcome Screen -->
+            <div class="chat-welcome" id="chat-welcome-card">
+              <img src="assets/logo.jpg" alt="Quasar AI Logo">
+              <h2>What can QUASAR AI build for you today?</h2>
+              <p>Your futuristic AI Workspace equipped with multi-agent intelligence, business financial modeling, pitch generation, and creative brand design tools.</p>
+
+              <div class="prompt-suggestions">
+                <div class="suggestion-card" data-prompt="Build a comprehensive business launch plan for a new tech startup with low initial capital.">
+                  <h5><i class="fas fa-rocket" style="color:#fbbf24;"></i> Business Strategy</h5>
+                  <p>Generate startup GTM roadmap & revenue channels.</p>
+                </div>
+                <div class="suggestion-card" data-prompt="Calculate break-even unit sales for a product priced at $149 with $3,000 monthly operational costs.">
+                  <h5><i class="fas fa-calculator" style="color:#00f0ff;"></i> Financial Calculator</h5>
+                  <p>Analyze break-even metrics & profit margins.</p>
+                </div>
+                <div class="suggestion-card" data-prompt="Generate high-converting ad copy and taglines for an AI software product.">
+                  <h5><i class="fas fa-ad" style="color:#ec4899;"></i> Brand Ad Copy</h5>
+                  <p>Draft viral headline & marketing slogans.</p>
+                </div>
+                <div class="suggestion-card" data-prompt="Write an async JavaScript API wrapper with error handling and timing metrics.">
+                  <h5><i class="fas fa-code" style="color:#10b981;"></i> Code Engine</h5>
+                  <p>Generate clean, production-ready source code.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chat Input Footer -->
+          <div class="chat-input-wrapper">
+            <div class="chat-input-box">
+              <textarea id="chat-input-field" placeholder="Ask Quasar AI anything or describe your business problem..."></textarea>
+              <div class="input-actions">
+                <button class="btn-icon" id="btn-voice-input" title="Voice Input Speech"><i class="fas fa-microphone"></i></button>
+                <button class="btn-icon" title="Upload Document"><i class="fas fa-paperclip"></i></button>
+                <button class="btn-send" id="btn-chat-send"><i class="fas fa-arrow-up"></i></button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- 2. ENTREPRENEUR & BUSINESSMAN COPILOT (QUASAR BIZBRAIN) -->
+        <section class="tab-pane" id="pane-biz">
+          <div class="biz-header">
+            <div class="biz-title-group">
+              <h2><i class="fas fa-briefcase" style="color:#fbbf24;"></i> Quasar BizBrain — Entrepreneur Hub</h2>
+              <p>Specialized AI copilot for new business owners: Plan, calculate financials, build pitch scripts, and solve complex operational hurdles.</p>
+            </div>
+          </div>
+
+          <!-- Hero Banner Image -->
+          <div style="width:100%; height:160px; border-radius:16px; margin-bottom:24px; overflow:hidden; position:relative; border:1px solid rgba(251,191,36,0.3);">
+            <img src="assets/biz_hero.jpg" alt="Business Control Dashboard" style="width:100%; height:100%; object-fit:cover;">
+            <div style="position:absolute; inset:0; background:linear-gradient(90deg, rgba(7,9,14,0.95) 0%, rgba(7,9,14,0.4) 100%); display:flex; align-items:center; padding:0 30px;">
+              <div>
+                <h3 style="color:#fbbf24; font-family:'Outfit'; font-size:1.5rem;">Empowering New Business Founders</h3>
+                <p style="color:#cbd5e1; font-size:0.9rem;">From raw business idea to profitable market execution with AI guidance.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="biz-grid">
+
+            <!-- Card 1: Business Plan Generator -->
+            <div class="biz-card col-8">
+              <div class="biz-card-header">
+                <div class="biz-card-title">
+                  <i class="fas fa-file-invoice"></i>
+                  <span>1. Business Plan & Growth Blueprint Generator</span>
+                </div>
+              </div>
+              
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+                <div class="form-group">
+                  <label class="form-label">Business / Brand Name</label>
+                  <input type="text" id="biz-name-input" class="form-control" placeholder="e.g. Apex Digital Solutions">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Industry Domain</label>
+                  <select id="biz-type-select" class="form-control">
+                    <option value="SaaS / Software AI">SaaS / Software AI</option>
+                    <option value="E-Commerce & Retail">E-Commerce & Retail</option>
+                    <option value="Agency & Consulting">Agency & Consulting</option>
+                    <option value="Local Service Business">Local Service Business</option>
+                    <option value="Digital Content & Media">Digital Content & Media</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style="display:grid; grid-template-columns:2fr 1fr; gap:14px;">
+                <div class="form-group">
+                  <label class="form-label">Business Concept Description</label>
+                  <input type="text" id="biz-desc-input" class="form-control" placeholder="Describe what product or service you want to sell...">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Initial Seed Capital</label>
+                  <input type="text" id="biz-budget-input" class="form-control" placeholder="$5,000">
+                </div>
+              </div>
+
+              <button class="btn-biz" id="btn-gen-plan"><i class="fas fa-magic"></i> Generate Complete Business Plan</button>
+
+              <div class="output-box" id="biz-plan-output">
+                Click "Generate Complete Business Plan" to auto-create Executive Summary, Target Segment, Revenue Channels, and 90-Day GTM Roadmap...
+              </div>
+            </div>
+
+            <!-- Card 2: Founder Checklist -->
+            <div class="biz-card col-4">
+              <div class="biz-card-header">
+                <div class="biz-card-title">
+                  <i class="fas fa-tasks"></i>
+                  <span>Founder Startup Checklist</span>
+                </div>
+              </div>
+
+              <div style="margin-bottom:14px;">
+                <div id="checklist-progress-label" style="font-size:0.8rem; color:#94a3b8; margin-bottom:6px;">0% Completed</div>
+                <div style="width:100%; height:8px; background:rgba(255,255,255,0.1); border-radius:4px; overflow:hidden;">
+                  <div id="checklist-progress-bar" style="width:0%; height:100%; background:var(--grad-biz); transition:var(--transition);"></div>
+                </div>
+              </div>
+
+              <div style="display:flex; flex-direction:column; gap:10px; font-size:0.88rem; color:#cbd5e1;">
+                <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                  <input type="checkbox" class="biz-checklist-item" checked> Define Unique Selling Proposition (USP)
+                </label>
+                <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                  <input type="checkbox" class="biz-checklist-item"> Register Business Domain & Brand Socials
+                </label>
+                <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                  <input type="checkbox" class="biz-checklist-item"> Calculate Break-Even & Unit Economics
+                </label>
+                <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                  <input type="checkbox" class="biz-checklist-item"> Setup MVP Product / Service Landing Page
+                </label>
+                <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                  <input type="checkbox" class="biz-checklist-item"> Acquire First 10 Beta Testing Clients
+                </label>
+              </div>
+            </div>
+
+            <!-- Card 3: Financial & ROI Calculator -->
+            <div class="biz-card col-6">
+              <div class="biz-card-header">
+                <div class="biz-card-title">
+                  <i class="fas fa-chart-bar"></i>
+                  <span>2. Financial & Break-Even Calculator</span>
+                </div>
+              </div>
+
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                <div class="form-group">
+                  <label class="form-label">Initial Investment ($)</label>
+                  <input type="number" id="calc-capital" class="form-control" value="10000">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Monthly Expenses ($)</label>
+                  <input type="number" id="calc-expenses" class="form-control" value="2500">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Price Per Product/Unit ($)</label>
+                  <input type="number" id="calc-price" class="form-control" value="99">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Target Monthly Unit Sales</label>
+                  <input type="number" id="calc-sales" class="form-control" value="50">
+                </div>
+              </div>
+
+              <button class="btn-biz" id="btn-calc-financials" style="margin-bottom:14px;"><i class="fas fa-calculator"></i> Calculate Financial Growth</button>
+
+              <div id="calc-results" style="margin-bottom:14px;"></div>
+
+              <div style="background:rgba(0,0,0,0.5); border-radius:10px; padding:10px;">
+                <h5 style="font-size:0.8rem; color:#94a3b8; margin-bottom:8px;">12-MONTH PROJECTION GRAPH</h5>
+                <canvas id="financial-canvas-chart"></canvas>
+              </div>
+            </div>
+
+            <!-- Card 4: Pitch Deck Builder -->
+            <div class="biz-card col-6">
+              <div class="biz-card-header">
+                <div class="biz-card-title">
+                  <i class="fas fa-presentation"></i>
+                  <span>3. Pitch Deck & Presentation Generator</span>
+                </div>
+              </div>
+              <p style="color:#94a3b8; font-size:0.85rem; margin-bottom:14px;">Auto-generate structured investor slide decks and presentation talking scripts.</p>
+
+              <button class="btn-biz" id="btn-gen-pitch"><i class="fas fa-layer-group"></i> Generate Investor Deck</button>
+
+              <div class="output-box" id="pitch-deck-output">
+                Click above to generate 3 Key Investor Pitch Slides and presentation pitch script.
+              </div>
+            </div>
+
+            <!-- Card 5: SWOT Analysis Matrix -->
+            <div class="biz-card col-6">
+              <div class="biz-card-header">
+                <div class="biz-card-title">
+                  <i class="fas fa-border-all"></i>
+                  <span>4. Dynamic SWOT Strategy Matrix</span>
+                </div>
+              </div>
+              <div id="swot-matrix-container"></div>
+            </div>
+
+            <!-- Card 6: Business Problem Solver -->
+            <div class="biz-card col-6">
+              <div class="biz-card-header">
+                <div class="biz-card-title">
+                  <i class="fas fa-life-ring"></i>
+                  <span>5. Business Problem Solver & Risk Advisor</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Describe your business problem or bottleneck</label>
+                <input type="text" id="problem-input-field" class="form-control" placeholder="e.g. High customer churn rate after month 1...">
+              </div>
+
+              <button class="btn-biz" id="btn-solve-problem"><i class="fas fa-lightbulb"></i> Diagnose & Resolve Problem</button>
+
+              <div class="output-box" id="problem-solution-output">
+                Input any business obstacle above to get root cause analysis and a 3-step action plan.
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+
+        <!-- AI PROJECTS & ACTIVITIES MANAGEMENT PANE -->
+        <section class="tab-pane" id="pane-projects">
+          <div class="biz-header">
+            <div class="biz-title-group">
+              <h2 style="background:var(--grad-quasar); -webkit-background-clip:text; -webkit-text-fill-color:transparent;"><i class="fas fa-diagram-project"></i> Quasar AI Projects & Activity Tracker</h2>
+              <p>Track business projects, AI task breakdowns, milestone progress, and real-time activity logs.</p>
+            </div>
+          </div>
+
+          <!-- Stats Metric Bar -->
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:16px; margin-bottom:24px;">
+            <div class="biz-card" style="padding:16px; text-align:center;">
+              <div style="font-size:0.8rem; color:#94a3b8;">Total Active Projects</div>
+              <div id="stat-total-projects" style="font-size:1.8rem; font-weight:800; color:#00f0ff;">2</div>
+            </div>
+            <div class="biz-card" style="padding:16px; text-align:center;">
+              <div style="font-size:0.8rem; color:#94a3b8;">AI Sub-Tasks Completed</div>
+              <div style="font-size:1.8rem; font-weight:800; color:#10b981;">14</div>
+            </div>
+            <div class="biz-card" style="padding:16px; text-align:center;">
+              <div style="font-size:0.8rem; color:#94a3b8;">Overall Execution Rate</div>
+              <div style="font-size:1.8rem; font-weight:800; color:#fbbf24;">78%</div>
+            </div>
+          </div>
+
+          <div class="biz-grid">
+
+            <!-- Create New Project Card -->
+            <div class="biz-card col-6">
+              <div class="biz-card-header">
+                <div class="biz-card-title">
+                  <i class="fas fa-folder-plus" style="color:#00f0ff;"></i>
+                  <span>Initialize New AI Project</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Project Title</label>
+                <input type="text" id="proj-title-input" class="form-control" placeholder="e.g. AI Content Engine Launch">
+              </div>
+
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                <div class="form-group">
+                  <label class="form-label">Category</label>
+                  <select id="proj-cat-select" class="form-control">
+                    <option value="Business Strategy">Business Strategy</option>
+                    <option value="Software & AI">Software & AI</option>
+                    <option value="Marketing & Growth">Marketing & Growth</option>
+                    <option value="Retail / D2C">Retail / D2C</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Target Completion Date</label>
+                  <input type="date" id="proj-date-input" class="form-control">
+                </div>
+              </div>
+
+              <button class="btn-pro" id="btn-create-project"><i class="fas fa-plus-circle"></i> Create Active Project</button>
+            </div>
+
+            <!-- AI Activity Decomposer -->
+            <div class="biz-card col-6">
+              <div class="biz-card-header">
+                <div class="biz-card-title">
+                  <i class="fas fa-cogs" style="color:#fbbf24;"></i>
+                  <span>AI Activity & Task Decomposer</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Project Objective or Milestone Goal</label>
+                <input type="text" id="ai-task-goal-input" class="form-control" placeholder="e.g. Automate customer support on WhatsApp...">
+              </div>
+
+              <button class="btn-biz" id="btn-gen-ai-tasks"><i class="fas fa-sitemap"></i> Decompose Goal into AI Steps</button>
+
+              <div class="output-box" id="ai-tasks-output" style="margin-top:14px;">
+                Enter a project objective above to let Quasar AI generate step-by-step assigned tasks for each AI executive.
+              </div>
+            </div>
+
+            <!-- Live Activity Feed Log -->
+            <div class="biz-card col-12">
+              <div class="biz-card-header">
+                <div class="biz-card-title">
+                  <i class="fas fa-stream" style="color:#ec4899;"></i>
+                  <span>Real-Time AI Activity Log</span>
+                </div>
+              </div>
+              <div id="activity-feed-list"></div>
+            </div>
+
+            <!-- Dynamic Projects Grid -->
+            <div class="col-12" style="margin-top:10px;">
+              <h3 style="color:#fff; font-family:'Outfit'; font-size:1.3rem; margin-bottom:14px;"><i class="fas fa-layer-group" style="color:#00f0ff;"></i> Active Project Dashboards</h3>
+              <div class="biz-grid" id="projects-card-grid"></div>
+            </div>
+
+          </div>
+        </section>
+
+
+        <!-- 3. AI BRAIN MULTI-AGENT TEAM PANE -->
+        <section class="tab-pane" id="pane-agents">
+          <div class="biz-header">
+            <div class="biz-title-group">
+              <h2 style="background:var(--grad-quasar); -webkit-background-clip:text; -webkit-text-fill-color:transparent;"><i class="fas fa-users-cog"></i> Quasar Executive AI Agent Team</h2>
+              <p>Consult with specialized AI executives across Strategy, Finance, Tech Architecture, Marketing, and Design.</p>
+            </div>
+          </div>
+
+          <div class="agent-grid">
+            <div class="agent-card selected" data-agent="cso">
+              <div class="agent-avatar" style="background:rgba(0,240,255,0.15); color:#00f0ff;"><i class="fas fa-chess-king"></i></div>
+              <h4>AURA-9</h4>
+              <div class="agent-role">Chief Strategy Officer</div>
+              <p class="agent-desc">Specialized in market entry, growth positioning, and competitive edge.</p>
+            </div>
+
+            <div class="agent-card" data-agent="cfo">
+              <div class="agent-avatar" style="background:rgba(16,185,129,0.15); color:#10b981;"><i class="fas fa-chart-line"></i></div>
+              <h4>VALOR-X</h4>
+              <div class="agent-role">Chief Financial Officer</div>
+              <p class="agent-desc">Specialized in unit economics, pricing strategy, and burn rate reduction.</p>
+            </div>
+
+            <div class="agent-card" data-agent="cto">
+              <div class="agent-avatar" style="background:rgba(138,43,226,0.15); color:#8a2be2;"><i class="fas fa-microchip"></i></div>
+              <h4>CYBER-7</h4>
+              <div class="agent-role">Chief Technology Officer</div>
+              <p class="agent-desc">Specialized in software architecture, AI model pipelines, and cloud scale.</p>
+            </div>
+
+            <div class="agent-card" data-agent="cmo">
+              <div class="agent-avatar" style="background:rgba(236,72,153,0.15); color:#ec4899;"><i class="fas fa-bullhorn"></i></div>
+              <h4>PULSE-4</h4>
+              <div class="agent-role">Chief Marketing Officer</div>
+              <p class="agent-desc">Specialized in customer acquisition funnels, copywriting, and viral ads.</p>
+            </div>
+
+            <div class="agent-card" data-agent="cdo">
+              <div class="agent-avatar" style="background:rgba(251,191,36,0.15); color:#fbbf24;"><i class="fas fa-palette"></i></div>
+              <h4>VIVID-1</h4>
+              <div class="agent-role">Creative Design Director</div>
+              <p class="agent-desc">Specialized in cyber aesthetics, brand identity, and visual experience.</p>
+            </div>
+          </div>
+
+          <div class="biz-card">
+            <h4 id="selected-agent-title" style="color:#00f0ff; font-family:'Outfit'; font-size:1.2rem; margin-bottom:12px;">AURA-9 - Chief Strategy Officer</h4>
+            
+            <div class="form-group">
+              <input type="text" id="agent-prompt-input" class="form-control" placeholder="Ask your executive agent team a specific question or scenario...">
+            </div>
+
+            <div style="display:flex; gap:12px;">
+              <button class="btn-pro" id="btn-agent-consult" style="flex:1;"><i class="fas fa-comments"></i> Consult Selected Agent</button>
+              <button class="btn-biz" id="btn-board-meeting" style="flex:1;"><i class="fas fa-gavel"></i> Convene Full Board Meeting</button>
+            </div>
+
+            <div class="output-box" id="agent-consult-output" style="margin-top:16px;">
+              Select an executive agent above and enter your inquiry to receive specialized advice.
+            </div>
+          </div>
+        </section>
+
+
+        <!-- 4. BRAND & GRAPHIC STUDIO -->
+        <section class="tab-pane" id="pane-brand">
+          <div class="biz-header">
+            <div class="biz-title-group">
+              <h2 style="background:linear-gradient(90deg, #ec4899, #8a2be2); -webkit-background-clip:text; -webkit-text-fill-color:transparent;"><i class="fas fa-paint-brush"></i> Brand & Graphic Identity Studio</h2>
+              <p>Generate slogans, color palettes, logo concepts, and high-converting ad copy for your venture.</p>
+            </div>
+          </div>
+
+          <div class="biz-grid">
+            
+            <!-- Card 1: Logo Concept Visualizer -->
+            <div class="biz-card col-6">
+              <div class="biz-card-header">
+                <div class="biz-card-title">
+                  <i class="fas fa-drafting-compass" style="color:#ec4899;"></i>
+                  <span>Dynamic Logo Concept Visualizer</span>
+                </div>
+              </div>
+
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px;">
+                <div class="form-group">
+                  <label class="form-label">Brand Name</label>
+                  <input type="text" id="logo-text-input" class="form-control" value="QUASAR">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Logo Icon Symbol</label>
+                  <select id="logo-icon-select" class="form-control">
+                    <option value="fa-atom">Atom Core</option>
+                    <option value="fa-rocket">Rocket Launch</option>
+                    <option value="fa-brain">AI Brain</option>
+                    <option value="fa-crown">Crown Royalty</option>
+                    <option value="fa-bolt">Lightning Bolt</option>
+                  </select>
+                </div>
+              </div>
+
+              <button class="btn-pro" id="btn-render-logo-canvas" style="margin-bottom:14px;"><i class="fas fa-sync"></i> Render Logo Preview</button>
+
+              <div class="canvas-frame">
+                <div class="canvas-preview-logo">
+                  <i class="logo-icon fas fa-atom" id="preview-logo-icon" style="color:#00f0ff; text-shadow:0 0 20px #00f0ff;"></i>
+                  <h3 id="preview-logo-text" style="color:#fff; background:linear-gradient(90deg,#00f0ff,#7000ff,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">QUASAR</h3>
+                  <span style="font-size:0.75rem; letter-spacing:3px; color:#94a3b8; text-transform:uppercase;">ENTERPRISE AI</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: Color Palette Generator -->
+            <div class="biz-card col-6">
+              <div class="biz-card-header">
+                <div class="biz-card-title">
+                  <i class="fas fa-swatchbook" style="color:#00f0ff;"></i>
+                  <span>AI Color Palette Generator</span>
+                </div>
+              </div>
+
+              <p style="color:#94a3b8; font-size:0.85rem; margin-bottom:12px;">Click any swatch to copy its hex color code instantly.</p>
+              <button class="btn-biz" id="btn-new-palette" style="margin-bottom:14px;"><i class="fas fa-random"></i> Generate New Harmony Palette</button>
+
+              <div id="palette-swatches-container" class="palette-container"></div>
+            </div>
+
+            <!-- Card 3: Brand Slogan & Ad Copy -->
+            <div class="biz-card col-12">
+              <div class="biz-card-header">
+                <div class="biz-card-title">
+                  <i class="fas fa-bullhorn" style="color:#fbbf24;"></i>
+                  <span>Brand Tagline & Social Ad Copy Studio</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Brand / Product Keyword</label>
+                <input type="text" id="brand-keyword-input" class="form-control" placeholder="e.g. Quasar AI Automation">
+              </div>
+
+              <button class="btn-pro" id="btn-gen-brand"><i class="fas fa-pen-nib"></i> Generate Slogans & Copy</button>
+
+              <div class="output-box" id="brand-output-box">
+                Enter your brand keyword above to produce catchy slogans and ad post templates.
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+
+        <!-- 5. PROMPT LIBRARY & KNOWLEDGE VAULT -->
+        <section class="tab-pane" id="pane-vault">
+          <div class="biz-header">
+            <div class="biz-title-group">
+              <h2 style="color:#00f0ff;"><i class="fas fa-book"></i> Prompt & Knowledge Vault</h2>
+              <p>Curated high-leverage prompt templates for business, coding, marketing, and legal setup.</p>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:20px;">
+            <div class="biz-card">
+              <h4 style="color:#fbbf24; margin-bottom:8px;"><i class="fas fa-briefcase"></i> Startup Valuation Prompt</h4>
+              <p style="font-size:0.85rem; color:#cbd5e1; line-height:1.5;">"Act as a Silicon Valley venture investor. Evaluate my startup concept [Insert details], analyze risks, and provide a pre-money valuation framework."</p>
+              <button class="btn-pro" style="margin-top:12px; font-size:0.75rem;" onclick="navigator.clipboard.writeText(this.previousElementSibling.innerText); alert('Prompt copied!');">Copy Prompt</button>
+            </div>
+
+            <div class="biz-card">
+              <h4 style="color:#00f0ff; margin-bottom:8px;"><i class="fas fa-code"></i> Code Refactoring Prompt</h4>
+              <p style="font-size:0.85rem; color:#cbd5e1; line-height:1.5;">"Refactor this JavaScript/Python code block for maximum performance, time complexity reduction, clean async error handling, and inline documentation."</p>
+              <button class="btn-pro" style="margin-top:12px; font-size:0.75rem;" onclick="navigator.clipboard.writeText(this.previousElementSibling.innerText); alert('Prompt copied!');">Copy Prompt</button>
+            </div>
+
+            <div class="biz-card">
+              <h4 style="color:#ec4899; margin-bottom:8px;"><i class="fas fa-bullhorn"></i> Viral Marketing Funnel Prompt</h4>
+              <p style="font-size:0.85rem; color:#cbd5e1; line-height:1.5;">"Create a 7-day automated email welcome sequence that converts new free-tier users into paying annual subscribers with zero pushiness."</p>
+              <button class="btn-pro" style="margin-top:12px; font-size:0.75rem;" onclick="navigator.clipboard.writeText(this.previousElementSibling.innerText); alert('Prompt copied!');">Copy Prompt</button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- JavaScript Dependencies -->
+  <script src="js/charts.js"></script>
+  <script src="js/chatEngine.js"></script>
+  <script src="js/bizBrain.js"></script>
+  <script src="js/agentHub.js"></script>
+  <script src="js/brandStudio.js"></script>
+  <script src="js/projectHub.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
